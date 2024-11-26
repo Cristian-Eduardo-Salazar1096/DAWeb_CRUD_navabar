@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block cuerpo  %}
+{% load static %}
+<div class="row"> <!--la fila-->
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"><!--Columna izquierda-->
+    <center><h1>Registrar Producto</h1></center>
+        <div class="card mx-5"><!--la tarjeta-->
+            <div class="card-body">
+                <form action="registrarProducto/" method="POST"> {% csrf_token %}
+                    <div class="form-group">
+                        <input type="number" id="id_producto" name="id_producto" class="form-control" placeholder="Id Producto" minlength="1" maxlength="6" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" maxlength="50" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="number" id="precio" name="precio" placeholder="Precio" class="form-control" maxlength="100" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="number" id="Cantidad" name="Cantidad" class="form-control" placeholder="Cantidad" minlength="1" maxlength="6" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="Descripcion" name="Descripcion" class="form-control" placeholder="Descripcion" maxlength="1000" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="Categoria" name="Categoria" class="form-control" placeholder="Categoria" maxlength="50" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="date" id="Fech_Cad" name="Fech_Cad" class="form-control" placeholder="Fecha de Caducidad" min="2024-01-01" required>
+                    </div>
+                    <br>
+                    <div class="form-group py-2 text-center">
+                        <button type="submit" class="btn btn-primary btn-dark">Guardar Producto</button>
+                    </div>
+                </form>
+            </div>
+        </div><!--la tarjeta-->
+    </div><!--Columna izquierda-->
+    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8"><!--Columna Derecha-->
+        <h1>Lista de Productos</h1>
+        <img class="w-50" src="{% static 'img/2.webp' %}" alt="Salazar" width="300" height="150"/>
+        <!--La Tabla-->
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Id_Producto</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Fecha Caducidad</th>
+                    <th>Opciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for m in misProductos  %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{m.id_producto}}</td>
+                        <td>{{m.nombre}}</td>
+                        <td>{{m.precio}}</td>
+                        <td>{{m.Cantidad}}</td>
+                        <td>{{m.Descripcion}}</td>
+                        <td>{{m.Categoria}}</td>
+                        <td>{{m.Fech_Cad|date:'d-m-Y' }}</td>
+                        <td> <a href="seleccionarProducto/{{m.id_producto}}" class="btn btn-info">Editar</a></td><!--falta-->
+                        <td> <a href="borrarProducto/{{m.id_producto}}" class="btn btn-danger">Borrar</a></td><!--falta-->
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div><!--Columna Derecha-->
+</div><!--la fila-->
+{% endblock  %}

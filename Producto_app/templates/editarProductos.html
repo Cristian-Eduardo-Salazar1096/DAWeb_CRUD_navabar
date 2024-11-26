@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<center>
+    <div class="row justify-content-center"> <!-- Fila centrada -->
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4"> <!-- Columna centrada -->
+            <center><h1>Editar Productos</h1></center>
+            <div class="card mx-auto"> <!-- Tarjeta centrada -->
+                <div class="card-body">
+                    <form action="/editarProducto/{{ producto.id_producto }}" method="POST"> {% csrf_token %}
+                        <div class="form-group">
+                            <input type="number" id="id_producto" name="id_producto" class="form-control" value="{{ producto.id_producto }}" readonly minlength="1" maxlength="6" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="text" id="nombre" name="nombre" class="form-control" value="{{ producto.nombre }}" maxlength="50" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="number" id="precio" name="precio" value="{{ producto.precio }}" class="form-control" maxlength="100" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="number" id="Cantidad" name="Cantidad" class="form-control" value="{{ producto.Cantidad }}" minlength="1" maxlength="6" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="text" id="Descripcion" name="Descripcion" class="form-control" value="{{ producto.Descripcion }}" maxlength="1000" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="text" id="Categoria" name="Categoria" class="form-control" value="{{ producto.Categoria }}" maxlength="50" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="date" id="Fech_Cad" name="Fech_Cad" class="form-control" value="{{ producto.Fech_Cad|date:'Y-m-d' }}" min="2024-01-01" required> <!--Se pone el |date:'Y-m-d' para que se pueda mostrar mostrar como tipo value a la hora de editarlo-->
+                        </div>
+                        <br>
+                        <div class="form-group py-2 text-center">
+                            <button type="submit" class="btn btn-primary btn-dark">Guardar Producto</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div> <!-- Fin de la columna -->
+    </div> <!-- Fin de la fila -->
+</center>
+{% endblock %}

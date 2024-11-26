@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block cuerpo  %}
+{% load static %}
+<div class="row"> <!--la fila-->
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"><!--Columna izquierda-->
+    <center><h1>Registrar Pedido</h1></center>
+        <div class="card mx-5"><!--la tarjeta-->
+            <div class="card-body">
+                <form action="registrarPedido/" method="POST"> {% csrf_token %} <!--Falta Action-->
+                    <center><div class="form-group">
+                        <input type="number" id="id_pedido" name="id_pedido" class="form-control" placeholder="Id Pedido" minlength="1" maxlength="6" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" maxlength="100" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="date" id="fech" name="fech" placeholder="Fecha" class="form-control" min="2024-01-01" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="number" id="id_Cliente" name="id_Cliente" class="form-control" placeholder="Id Cliente" minlength="1" maxlength="6" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="Costo" name="Costo" class="form-control" placeholder="Costo" maxlength="20" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="Direccion" name="Direccion" class="form-control" placeholder="Direccion"  maxlength="100" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="number" id="Cantidad" name="Cantidad" class="form-control" placeholder="Cantidad" minlength="1" maxlength="10" required>
+                    </div>
+                    <br>
+                    <hr></hr>
+                    <div class="form-group py-2">
+                        <button type="submit" class="btn btn-primary btn-dark">Guardar Pedido</button>
+                    </div>
+                </center>
+                </form>
+            </div>
+        </div><!--la tarjeta-->
+    </div><!--Columna izquierda-->
+    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8"><!--Columna Derecha-->
+        <h1>Lista de Pedidos</h1>
+        <img class="w-50" src="{% static 'img/3.jpg' %}" alt="Salazar" width="300" height="150"/>
+        <!--La Tabla-->
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Id_Pedido</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Id_Cliente</th>
+                    <th scope="col">Costo</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">Cantidad</th>
+                    <th>Opciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for m in misPedidos  %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{m.id_pedido}}</td>
+                        <td>{{m.nombre}}</td>
+                        <td>{{m.fech|date:'d-m-Y' }}</td>
+                        <td>{{m.id_Cliente}}</td>
+                        <td>{{m.Costo}}</td>
+                        <td>{{m.Direccion}}</td>
+                        <td>{{m.Cantidad}}</td>
+                        <td> <a href="seleccionarPedido/{{m.id_pedido}}" class="btn btn-info">Editar</a></td><!--falta-->
+                        <td> <a href="borrarPedido/{{m.id_pedido}}" class="btn btn-danger">Borrar</a></td><!--falta-->
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div><!--Columna Derecha-->
+</div><!--la fila-->
+{% endblock  %}

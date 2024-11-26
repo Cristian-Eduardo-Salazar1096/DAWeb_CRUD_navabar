@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<center>
+    <div class="row justify-content-center"> <!-- Fila centrada -->
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4"> <!-- Columna centrada -->
+            <center><h1>Editar Pedidos</h1></center>
+            <div class="card mx-auto"> <!-- Tarjeta centrada -->
+                <div class="card-body">
+                    <form action="/editarPedido/{{ pedido.id_pedido }}" method="POST"> {% csrf_token %}
+                        <div class="form-group">
+                            <input type="number" id="id_pedido" name="id_pedido" class="form-control" value="{{ pedido.id_pedido }}" readonly>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="text" id="nombre" name="nombre" class="form-control" value="{{ pedido.nombre }}" maxlength="100" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="date" id="fech" name="fech" value="{{ pedido.fech|date:'Y-m-d' }}" class="form-control" min="2024-01-01" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="number" id="id_Cliente" name="id_Cliente" class="form-control" value="{{ pedido.id_Cliente }}" minlength="1" maxlength="6" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="number" id="Costo" name="Costo" class="form-control" value="{{ pedido.Costo }}" maxlength="6" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="text" id="Direccion" name="Direccion" class="form-control" value="{{ pedido.Direccion }}" maxlength="100" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="number" id="Cantidad" name="Cantidad" class="form-control" value="{{ pedido.Cantidad }}" minlength="1" maxlength="10" required>
+                        </div>
+                        <br>
+                        <div class="form-group py-2 text-center">
+                            <button type="submit" class="btn btn-primary btn-dark">Guardar Pedido</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div> <!-- Fin de la columna -->
+    </div> <!-- Fin de la fila -->
+</center>
+{% endblock %}
