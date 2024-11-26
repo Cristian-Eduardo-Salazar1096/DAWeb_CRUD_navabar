@@ -18,26 +18,25 @@ Pantalla de Categoria
 
 ![image](https://github.com/user-attachments/assets/232917d8-ac6d-49af-96a3-ffea92b5c598)
 
-![image](https://github.com/user-attachments/assets/399811a1-82a0-4ce3-9ff6-f97517f15adc)
+![image](https://github.com/user-attachments/assets/c211b136-30e8-4386-bfb1-c35cf27ef50f)
 
 Pantalla de Cliente
 
 ![image](https://github.com/user-attachments/assets/5a90371e-915e-44ff-bd9e-c64825f06522)
 
-![image](https://github.com/user-attachments/assets/2b4d071a-29a5-46a0-8c34-bbc238f88081)
+![image](https://github.com/user-attachments/assets/196721b8-b774-4480-9c8f-86059da7e55a)
 
 Pantalla de Empleado
 
 ![image](https://github.com/user-attachments/assets/92987932-5d8a-4573-939c-0d56b8288429)
 
-![image](https://github.com/user-attachments/assets/bbcc29f8-e802-4630-bb22-85f9f9ff7707)
-
+![image](https://github.com/user-attachments/assets/a4bb626f-5242-4e2f-a08b-b927af191b2c)
 
 Pantalla de Provedor
 
 ![image](https://github.com/user-attachments/assets/b1216b6d-b041-4f22-8798-e6e27ed55fbd)
 
-![image](https://github.com/user-attachments/assets/5b742ef2-0fb7-4ce3-b138-1d789ff2f2f5)
+![image](https://github.com/user-attachments/assets/161d6b35-f865-4750-86e0-19f70b9f0f13)
 
 Pantalla de Pedido
 
