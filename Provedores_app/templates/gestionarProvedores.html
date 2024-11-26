@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block cuerpo  %}
+{% load static %}
+<div class="row"> <!--la fila-->
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"><!--Columna izquierda-->
+    <center><h1>Registrar Provedor</h1></center>
+        <div class="card mx-5"><!--la tarjeta-->
+            <div class="card-body">
+                <form action="registrarProvedor/" method="POST"> {% csrf_token %} <!--Falta Action-->
+                    <center><div class="form-group">
+                        <input type="number" id="id_provedor" name="id_provedor" class="form-control" placeholder="Id Provedor" minlength="1" maxlength="6" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" maxlength="100" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="Producto" name="Producto" placeholder="Producto" class="form-control" maxlength="100" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="Sucursal" name="Sucursal" class="form-control" placeholder="Sucursal" maxlength="100" required>
+                    </div>
+                    <br>
+                    <div class="d-flex">
+                        <input type="time" id="HorarioE" name="HorarioE" class="form-control" placeholder="HorarioE" maxlength="20" required>
+                        <input type="time" id="HorarioS" name="HorarioS" class="form-control" placeholder="HorarioS"  maxlength="100" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="number" id="Producto_Cant" name="Producto_Cant" class="form-control" placeholder="Producto Cantidad" minlength="1" maxlength="10" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="Direccion" name="Direccion" class="form-control" placeholder="Direccion" maxlength="100" required>
+                    </div>
+                    <br>
+                    <hr></hr>
+                    <div class="form-group py-2">
+                        <button type="submit" class="btn btn-primary btn-dark">Guardar Provedor</button>
+                    </div>
+                </center>
+                </form>
+            </div>
+        </div><!--la tarjeta-->
+    </div><!--Columna izquierda-->
+    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8"><!--Columna Derecha-->
+        <h1>Lista de Provedores</h1>
+        <img class="w-50" src="{% static 'img/images.jpg' %}" alt="Salazar" width="300" height="150"/>
+        <!--La Tabla-->
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Id_Provedor</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Sucursal</th>
+                    <th scope="col">HorarioE</th>
+                    <th scope="col">HorarioS</th>
+                    <th scope="col">Producto_Cant</th>
+                    <th scope="col">Direccion</th>
+                    <th>Opciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for m in misProvedores  %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{m.id_provedor}}</td>
+                        <td>{{m.nombre}}</td>
+                        <td>{{m.Producto}}</td>
+                        <td>{{m.Sucursal}}</td>
+                        <td>{{m.HorarioE}}</td>
+                        <td>{{m.HorarioS}}</td>
+                        <td>{{m.Producto_Cant}}</td>
+                        <td>{{m.Direccion}}</td>
+                        <td> <a href="seleccionarProvedor/{{m.id_provedor}}" class="btn btn-info">Editar</a></td><!--falta-->
+                        <td> <a href="borrarProvedor/{{m.id_provedor}}" class="btn btn-danger">Borrar</a></td><!--falta-->
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div><!--Columna Derecha-->
+</div><!--la fila-->
+{% endblock  %}

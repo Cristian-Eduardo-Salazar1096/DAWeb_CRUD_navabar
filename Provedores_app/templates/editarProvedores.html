@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<center>
+    <div class="row justify-content-center"> <!-- Fila centrada -->
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4"> <!-- Columna centrada -->
+            <center><h1>Editar Provedores</h1></center>
+            <div class="card mx-auto"> <!-- Tarjeta centrada -->
+                <div class="card-body">
+                    <form action="/Provedor/editarProvedor/{{ provedor.id_provedor }}" method="POST"> {% csrf_token %} <!--Falta Action-->
+                        <center><div class="form-group">
+                            <input type="number" id="id_provedor" name="id_provedor" class="form-control" value="{{provedor.id_provedor }}" minlength="1" maxlength="6" readonly required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="text" id="nombre" name="nombre" class="form-control" value="{{provedor.nombre }}" maxlength="100" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="text" id="Producto" name="Producto" value="{{provedor.Producto }}" class="form-control" maxlength="100" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="text" id="Sucursal" name="Sucursal" class="form-control" value="{{provedor.Sucursal }}" maxlength="100" required>
+                        </div>
+                        <br>
+                        <div class="d-flex">
+                            <input type="time" id="HorarioE" name="HorarioE" class="form-control" value="{{provedor.HorarioE }}" maxlength="20" required>
+                            <input type="time" id="HorarioS" name="HorarioS" class="form-control" value="{{provedor.HorarioS }}"  maxlength="100" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="number" id="Producto_Cant" name="Producto_Cant" class="form-control" value="{{provedor.Producto_Cant }}" minlength="1" maxlength="10" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="text" id="Direccion" name="Direccion" class="form-control" value="{{provedor.Direccion }}" maxlength="100" required>
+                        </div>
+                        <br>
+                        <hr></hr>
+                        <div class="form-group py-2">
+                            <button type="submit" class="btn btn-primary btn-dark">Guardar Provedor</button>
+                        </div>
+                    </center>
+                    </form>
+                </div>
+            </div>
+        </div> <!-- Fin de la columna -->
+    </div> <!-- Fin de la fila -->
+</center>
+{% endblock %}
