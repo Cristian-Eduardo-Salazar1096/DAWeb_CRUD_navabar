@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block cuerpo  %}
+{% load static %}
+<div class="row"> <!--la fila-->
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"><!--Columna izquierda-->
+    <center><h1>Registrar Cliente</h1></center>
+        <div class="card mx-5"><!--la tarjeta-->
+            <div class="card-body">
+                <form action="registrarCliente/" method="POST"> {% csrf_token %} <!--Falta Action-->
+                    <center><div class="form-group">
+                        <input type="number" id="id_cliente" name="id_cliente" class="form-control" placeholder="Id Cliente" minlength="1" maxlength="6" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" maxlength="100" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="Membresia" name="Membresia" placeholder="Membresia" class="form-control" maxlength="100" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="date" id="Fech_Nac" name="Fech_Nac" class="form-control" placeholder="Fecha de Nacimiento" maxlength="100" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="number" id="Telefono" name="Telefono" class="form-control" placeholder="Telefono" maxlength="12" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="Correo" name="Correo" class="form-control" placeholder="Correo" maxlength="100" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="Curp" name="Curp" class="form-control" placeholder="Curp" maxlength="100" required>
+                    </div>
+                    <br>
+                    <hr></hr>
+                    <div class="form-group py-2">
+                        <button type="submit" class="btn btn-primary btn-dark">Guardar Empleado</button>
+                    </div>
+                </center>
+                </form>
+            </div>
+        </div><!--la tarjeta-->
+    </div><!--Columna izquierda-->
+    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8"><!--Columna Derecha-->
+        <h1>Lista de Clientes</h1>
+        <img class="w-50" src="{% static 'img/5.jpg' %}" alt="Salazar" width="300" height="150"/>
+        <!--La Tabla-->
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Id_Cliente</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Membresia</th>
+                    <th scope="col">Fecha de Nacimiento</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Curp</th>
+                    <th>Opciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for m in misClientes %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{m.id_cliente}}</td>
+                        <td>{{m.nombre}}</td>
+                        <td>{{m.Membresia}}</td>
+                        <td>{{m.Fech_Nac|date:'d-m-Y' }}</td>
+                        <td>{{m.Telefono}}</td>
+                        <td>{{m.Correo}}</td>
+                        <td>{{m.Curp}}</td>
+                        <td> <a href="seleccionarCliente/{{m.id_cliente}}" class="btn btn-info">Editar</a></td><!--falta-->
+                        <td> <a href="borrarCliente/{{m.id_cliente}}" class="btn btn-danger">Borrar</a></td><!--falta-->
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div><!--Columna Derecha-->
+</div><!--la fila-->
+{% endblock  %}

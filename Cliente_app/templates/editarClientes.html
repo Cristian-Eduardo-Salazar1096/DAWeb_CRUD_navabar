@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<center>
+    <div class="row justify-content-center"> <!-- Fila centrada -->
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4"> <!-- Columna centrada -->
+            <center><h1>Editar Clientes</h1></center>
+            <div class="card mx-auto"> <!-- Tarjeta centrada -->
+                <div class="card-body">
+                    <form action="/Cliente/editarCliente/{{ cliente.id_cliente }}" method="POST"> {% csrf_token %} <!--Falta Action-->
+                        <center><div class="form-group">
+                            <input type="number" id="id_cliente" name="id_cliente" class="form-control" value="{{cliente.id_cliente }}" readonly minlength="1" maxlength="6" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="text" id="nombre" name="nombre" class="form-control" value="{{cliente.nombre }}" maxlength="100" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="text" id="Membresia" name="Membresia" value="{{cliente.Membresia }}" class="form-control" maxlength="100" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="date" id="Fech_Nac" name="Fech_Nac" class="form-control" value="{{cliente.Fech_Nac|date:'Y-m-d' }}" maxlength="100" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="number" id="Telefono" name="Telefono" class="form-control" value="{{cliente.Telefono }}" maxlength="12" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="text" id="Correo" name="Correo" class="form-control" value="{{cliente.Correo }}" maxlength="100" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="text" id="Curp" name="Curp" class="form-control" value="{{cliente.Curp }}" maxlength="100" required>
+                        </div>
+                        <br>
+                        <hr></hr>
+                        <div class="form-group py-2">
+                            <button type="submit" class="btn btn-primary btn-dark">Guardar Cliente</button>
+                        </div>
+                    </center>
+                    </form>
+                </div>
+            </div>
+        </div> <!-- Fin de la columna -->
+    </div> <!-- Fin de la fila -->
+</center>
+{% endblock %}

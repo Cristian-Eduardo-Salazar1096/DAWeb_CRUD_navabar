@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<center>
+    <div class="row justify-content-center"> <!-- Fila centrada -->
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4"> <!-- Columna centrada -->
+            <center><h1>Editar Pedidos</h1></center>
+            <div class="card mx-auto"> <!-- Tarjeta centrada -->
+                <div class="card-body">
+                        <form action="/Empleado/editarEmpleado/{{ empleado.id_empleado }}" method="POST"> {% csrf_token %} <!--Falta Action-->
+                            <center><div class="form-group">
+                                <input type="number" id="id_empleado" name="id_empleado" class="form-control" value="{{empleado.id_empleado }}" readonly minlength="1" maxlength="6" required>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <input type="text" id="nombre" name="nombre" class="form-control" value="{{ empleado.nombre }}" maxlength="100" required>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <input type="text" id="Direccion" name="Direccion" value="{{ empleado.Direccion }}" class="form-control" maxlength="100" required>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <input type="text" id="Correo" name="Correo" class="form-control" value="{{ empleado.Correo }}" maxlength="100" required>
+                            </div>
+                            <br>
+                            <div class="d-flex">
+                                <input type="time" id="HorarioE" name="HorarioE" class="form-control" value="{{ empleado.HorarioE }}" maxlength="20" required>
+                                <input type="time" id="HorarioS" name="HorarioS" class="form-control" value="{{ empleado.HorarioS  }}"  maxlength="100" required>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <input type="number" id="Sueldo" name="Sueldo" class="form-control" value="{{ empleado.Sueldo }}" minlength="1" maxlength="10" required>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <input type="text" id="Curp" name="Curp" class="form-control" value="{{ empleado.Curp }}" maxlength="100" required>
+                            </div>
+                            <br>
+                            <hr></hr>
+                            <div class="form-group py-2">
+                                <button type="submit" class="btn btn-primary btn-dark">Guardar Empleado</button>
+                            </div>
+                        </center>
+                        </form>
+                </div>
+            </div>
+        </div> <!-- Fin de la columna -->
+    </div> <!-- Fin de la fila -->
+</center>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block cuerpo  %}
+{% load static %}
+<div class="row"> <!--la fila-->
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"><!--Columna izquierda-->
+    <center><h1>Registrar Empleado</h1></center>
+        <div class="card mx-5"><!--la tarjeta-->
+            <div class="card-body">
+                <form action="registrarEmpleado/" method="POST"> {% csrf_token %} <!--Falta Action-->
+                    <center><div class="form-group">
+                        <input type="number" id="id_empleado" name="id_empleado" class="form-control" placeholder="Id Empleado" minlength="1" maxlength="6" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" maxlength="100" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="Direccion" name="Direccion" placeholder="Direccion" class="form-control" maxlength="100" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="Correo" name="Correo" class="form-control" placeholder="Correo" maxlength="100" required>
+                    </div>
+                    <br>
+                    <div class="d-flex">
+                        <input type="time" id="HorarioE" name="HorarioE" class="form-control" placeholder="HorarioE" maxlength="20" required>
+                        <input type="time" id="HorarioS" name="HorarioS" class="form-control" placeholder="HorarioS"  maxlength="100" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="number" id="Sueldo" name="Sueldo" class="form-control" placeholder="Sueldo" minlength="1" maxlength="10" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="Curp" name="Curp" class="form-control" placeholder="Curp" maxlength="100" required>
+                    </div>
+                    <br>
+                    <hr></hr>
+                    <div class="form-group py-2">
+                        <button type="submit" class="btn btn-primary btn-dark">Guardar Empleado</button>
+                    </div>
+                </center>
+                </form>
+            </div>
+        </div><!--la tarjeta-->
+    </div><!--Columna izquierda-->
+    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8"><!--Columna Derecha-->
+        <h1>Lista de Empleados</h1>
+        <img class="w-50" src="{% static 'img/4.jpg' %}" alt="Salazar" width="300" height="150"/>
+        <!--La Tabla-->
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Id_Empleado</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">HorarioE</th>
+                    <th scope="col">HorarioS</th>
+                    <th scope="col">Sueldo</th>
+                    <th scope="col">Curp</th>
+                    <th>Opciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for m in misEmpleados  %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{m.id_empleado}}</td>
+                        <td>{{m.nombre}}</td>
+                        <td>{{m.Direccion}}</td>
+                        <td>{{m.Correo}}</td>
+                        <td>{{m.HorarioE}}</td>
+                        <td>{{m.HorarioS}}</td>
+                        <td>{{m.Sueldo}}</td>
+                        <td>{{m.Curp}}</td>
+                        <td> <a href="seleccionarEmpleado/{{m.id_empleado}}" class="btn btn-info">Editar</a></td><!--falta-->
+                        <td> <a href="borrarEmpleado/{{m.id_empleado}}" class="btn btn-danger">Borrar</a></td><!--falta-->
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div><!--Columna Derecha-->
+</div><!--la fila-->
+{% endblock  %}
